@@ -1,10 +1,13 @@
 package views;
 
+import javax.swing.JDesktopPane;
+
 public class MainFrame extends javax.swing.JFrame {
 
 
     public MainFrame() {
         initComponents();
+        setControllers();
     }
 
 
@@ -12,17 +15,19 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        mnuItemFusionar = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
 
         jMenu1.setText("Aplicacion");
 
@@ -36,8 +41,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenu2.setText("Misceláneos");
 
-        jMenuItem3.setText("Fusionar contenido archivos");
-        jMenu2.add(jMenuItem3);
+        mnuItemFusionar.setText("Fusionar contenido archivos");
+        jMenu2.add(mnuItemFusionar);
 
         jMenuItem4.setText("Convertir monedas");
         jMenu2.add(jMenuItem4);
@@ -88,15 +93,26 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
 
+    public JDesktopPane getDesktop() {
+        return desktop;
+    }
+    
+    private void setControllers(){
+        controllers.MainFrameController mfc = new controllers.MainFrameController(this);
+        
+        mnuItemFusionar.addActionListener(mfc);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem mnuItemFusionar;
     // End of variables declaration//GEN-END:variables
 }

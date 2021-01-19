@@ -24,7 +24,7 @@ public class TextoController implements ActionListener{
         switch(e.getActionCommand()){
             case "archivo1":
                 contenidoArchivo1 = getArchivo();
-                texto.getEditorTexto().setText(contenidoArchivo1);
+                texto.getEditorTexto().setText(contenidoArchivo1 + " " + contenidoArchivo2);
                 break;
             case "archivo2": 
                 contenidoArchivo2 = getArchivo();
