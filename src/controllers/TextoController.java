@@ -13,7 +13,7 @@ import views.TextoFrame;
 
 public class TextoController implements ActionListener{
     private final TextoFrame texto;
-    private String contenidoArchivo1, contenidoArchivo2, contenidoFinal;
+    private String contenidoArchivo1, contenidoArchivo2;
     
     public TextoController(TextoFrame texto ){
         this.texto = texto;
