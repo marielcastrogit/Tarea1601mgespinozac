@@ -22,10 +22,30 @@ public class TextoController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "archivo1":
+                FileReader fr;
+                String contenido = "";
                 file.showOpenDialog(texto);
                 texto.getTxtRuta1().setText(file.getSelectedFile().toString());
+                String saltoLinea = "\n";
+                try{
+                    BufferedReader br = new BufferedReader(new FileReader(file.getSelectedFile()));
+                    
+                    String linea;
 
+                        
+                    while((linea = br.readLine())!= null){
+                        contenido = contenido + linea + saltoLinea;
+                    }
+
+                }catch(IOException ex){
+                    
+                }finally{
+                    
+                }
+                
+                texto.setEditorTexto(contenido);
                 break;
+
             case "archivo2":
                 file.showOpenDialog(texto);
                 texto.getTxtRuta2().setText(file.getSelectedFile().toString());
