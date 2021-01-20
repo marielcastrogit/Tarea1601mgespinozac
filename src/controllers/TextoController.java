@@ -1,52 +1,37 @@
-
 package controllers;
 
 /*Esta es la clase que estara a cargo de controlar el TextoFrame, para 
 Fusionar los textos.*/
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import javax.swing.*;
 import views.TextoFrame;
 
+public class TextoController implements ActionListener {
 
-public class TextoController implements ActionListener{
     private final TextoFrame texto;
-    private String contenidoArchivo1, contenidoArchivo2;
-    
-    public TextoController(TextoFrame texto ){
+    private JFileChooser file;
+
+    public TextoController(TextoFrame texto) {
         this.texto = texto;
+        file = new JFileChooser();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch(e.getActionCommand()){
+        switch (e.getActionCommand()) {
             case "archivo1":
-                contenidoArchivo1 = getArchivo();
-                texto.getEditorTexto().setText(contenidoArchivo1 + " " + contenidoArchivo2);
+                file.showOpenDialog(texto);
+                texto.getTxtRuta1().setText(file.getSelectedFile().toString());
+
                 break;
-            case "archivo2": 
-                contenidoArchivo2 = getArchivo();
-                texto.getEditorTexto().setText(contenidoArchivo1 + " " + contenidoArchivo2);
+            case "archivo2":
+                file.showOpenDialog(texto);
+                texto.getTxtRuta2().setText(file.getSelectedFile().toString());
                 break;
         }
-        
-        
+
     }
-    
-    private String getArchivo(){
-        JFileChooser file;
-        ObjectInputStream ois;
-        
-        try {
-            file = new JFileChooser();
-            File archivoGuardar = file.getSelectedFile();
-            ois = new ObjectInputStream(new FileInputStream (archivoGuardar));
-            return ois.readUTF();
-        } catch (IOException ex) {}
-        
-        return "";
-    }
+
 }
-    
