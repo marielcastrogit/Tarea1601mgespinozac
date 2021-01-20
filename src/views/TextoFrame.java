@@ -72,7 +72,7 @@ public class TextoFrame extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -83,7 +83,7 @@ public class TextoFrame extends javax.swing.JInternalFrame {
     }
     
     private void setControllers(){
-        controllers.TextoController tc = new controllers.TextoController(this);
+        tc = new controllers.TextoController(this);
         
         btnArchivo1.addActionListener(tc);
         btnArchivo2.addActionListener(tc);
@@ -96,8 +96,9 @@ public class TextoFrame extends javax.swing.JInternalFrame {
     public JTextField getTxtRuta2() {
         return txtRuta2;
     }
-
     
+
+    private controllers.TextoController tc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnArchivo1;
     private javax.swing.JButton btnArchivo2;
