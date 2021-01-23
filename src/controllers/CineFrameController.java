@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.AbstractButton;
 import views.CineFrame;
 
-public class CineFrameController implements KeyListener, ItemListener {
+public class CineFrameController implements KeyListener, ActionListener,ItemListener {
 
     private CineFrame cine;
 
@@ -43,22 +43,32 @@ public class CineFrameController implements KeyListener, ItemListener {
     @Override
     public void itemStateChanged(ItemEvent e) {
 
-        String item = ((AbstractButton) e.getItemSelectable()).getActionCommand();
-        
-        
+        String btnSeleccionado = ((AbstractButton) e.getItemSelectable()).getActionCommand();
+
         String pelicula = cine.getListaPeliculas().getSelectedItem().toString();
 
         if (pelicula.equals("Star Wars - El ascenso de Skywalker")) {
-            if (item.equals("2D")) {
-
-                System.out.println("LISTA PELICULAS TERCER IF");
+            if (btnSeleccionado.equals("2D")) {
                 cine.getLblPrecioAdultos().setText("140");
                 cine.getLblPrecioNiños().setText("120");
             }
-            if (cine.getRbt3D().isSelected()) {
-                System.out.println("LISTA PELICULAS CUARTO IF");
+            if (btnSeleccionado.equals("3D")) {
                 cine.getLblPrecioAdultos().setText("180");
                 cine.getLblPrecioNiños().setText("150");
+            }
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == cine.getListaPeliculas()){
+            
+            if(!(cine.getListaPeliculas().getSelectedItem().toString().equals("Star Wars - El ascenso de Skywalker"))){
+                cine.getBtnGrupoSala().setSelected(cine.getRbt2D().getModel(), true);
+                cine.getRbt3D().setEnabled(false);
+            }else{
+                cine.getRbt2D().setEnabled(true);
+                cine.getRbt3D().setEnabled(true);
             }
         }
     }
