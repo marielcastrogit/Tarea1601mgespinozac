@@ -44,7 +44,7 @@ public class TextoController implements ActionListener {
                     } catch (IOException ex) {
                     }
                 } else {
-                    JOptionPane.showMessageDialog(texto, "El archivo ya ha sido seleccionado", " ", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(texto, "El archivo ya ha sido seleccionado, por favor limpia la ruta del archivo", " ", JOptionPane.INFORMATION_MESSAGE);
                 }
                 
 
@@ -69,7 +69,7 @@ public class TextoController implements ActionListener {
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(texto, "El archivo ya ha sido seleccionado", " ", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(texto, "El archivo ya ha sido seleccionado, por favor limpia la ruta del archivo", " ", JOptionPane.INFORMATION_MESSAGE);
                 }
                 break;
 
@@ -82,6 +82,26 @@ public class TextoController implements ActionListener {
                 texto.limpiarRuta2();
                 contenido2 = "";
                 texto.setEditorTexto(contenido1);
+                break;
+            case "Guardar":
+
+                if (!texto.getEditorTexto().isEmpty()) {
+                    file.showSaveDialog(texto);
+
+                    File archivoGuardar = file.getSelectedFile();
+                    try {
+                        if (!archivoGuardar.exists()) {
+                            archivoGuardar.createNewFile();
+                        }
+
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(archivoGuardar));
+                        bw.write(texto.getEditorTexto());
+                        bw.close();
+                    } catch (IOException ex) {
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(texto, "No hay texto para guardar", "", JOptionPane.INFORMATION_MESSAGE);
+                }
                 break;
 
         }

@@ -20,7 +20,7 @@ public class TextoFrame extends javax.swing.JInternalFrame {
         btnArchivo2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         editorTexto = new javax.swing.JEditorPane();
-        jButton2 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         btnLimpiarRuta1 = new javax.swing.JButton();
         btnLimpiarRuta2 = new javax.swing.JButton();
 
@@ -36,11 +36,14 @@ public class TextoFrame extends javax.swing.JInternalFrame {
 
         jScrollPane1.setViewportView(editorTexto);
 
-        jButton2.setText("Guardar");
+        btnGuardar.setForeground(new java.awt.Color(51, 51, 51));
+        btnGuardar.setText("Guardar");
 
+        btnLimpiarRuta1.setForeground(new java.awt.Color(153, 153, 153));
         btnLimpiarRuta1.setText("Limpiar");
         btnLimpiarRuta1.setActionCommand("Limpiar Ruta1");
 
+        btnLimpiarRuta2.setForeground(new java.awt.Color(153, 153, 153));
         btnLimpiarRuta2.setText("Limpiar");
         btnLimpiarRuta2.setActionCommand("Limpiar Ruta2");
 
@@ -50,7 +53,7 @@ public class TextoFrame extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnGuardar)
                 .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -83,13 +86,13 @@ public class TextoFrame extends javax.swing.JInternalFrame {
                     .addComponent(btnArchivo1)
                     .addComponent(btnArchivo2))
                 .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLimpiarRuta1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiarRuta2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLimpiarRuta2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(btnGuardar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -100,6 +103,10 @@ public class TextoFrame extends javax.swing.JInternalFrame {
         editorTexto.setText(texto);
     }
     
+    public String getEditorTexto(){
+        return editorTexto.getText();
+    }
+    
     private void setControllers(){
         tc = new controllers.TextoController(this);
         
@@ -108,6 +115,8 @@ public class TextoFrame extends javax.swing.JInternalFrame {
         
         btnLimpiarRuta1.addActionListener(tc);
         btnLimpiarRuta2.addActionListener(tc);
+        
+        btnGuardar.addActionListener(tc);
     }
 
     public JTextField getTxtRuta1() {
@@ -143,15 +152,16 @@ public class TextoFrame extends javax.swing.JInternalFrame {
     }
     
     
+    
 
     private controllers.TextoController tc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnArchivo1;
     private javax.swing.JButton btnArchivo2;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiarRuta1;
     private javax.swing.JButton btnLimpiarRuta2;
     private javax.swing.JEditorPane editorTexto;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtRuta1;
     private javax.swing.JTextField txtRuta2;
