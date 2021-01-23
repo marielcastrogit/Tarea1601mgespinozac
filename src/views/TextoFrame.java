@@ -21,6 +21,8 @@ public class TextoFrame extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         editorTexto = new javax.swing.JEditorPane();
         jButton2 = new javax.swing.JButton();
+        btnLimpiarRuta1 = new javax.swing.JButton();
+        btnLimpiarRuta2 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -36,10 +38,20 @@ public class TextoFrame extends javax.swing.JInternalFrame {
 
         jButton2.setText("Guardar");
 
+        btnLimpiarRuta1.setText("Limpiar");
+        btnLimpiarRuta1.setActionCommand("Limpiar Ruta1");
+
+        btnLimpiarRuta2.setText("Limpiar");
+        btnLimpiarRuta2.setActionCommand("Limpiar Ruta2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -52,12 +64,14 @@ public class TextoFrame extends javax.swing.JInternalFrame {
                         .addComponent(txtRuta2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnArchivo2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(btnLimpiarRuta1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpiarRuta2)
+                        .addGap(101, 101, 101)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,11 +82,15 @@ public class TextoFrame extends javax.swing.JInternalFrame {
                     .addComponent(txtRuta2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnArchivo1)
                     .addComponent(btnArchivo2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLimpiarRuta1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiarRuta2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -87,6 +105,9 @@ public class TextoFrame extends javax.swing.JInternalFrame {
         
         btnArchivo1.addActionListener(tc);
         btnArchivo2.addActionListener(tc);
+        
+        btnLimpiarRuta1.addActionListener(tc);
+        btnLimpiarRuta2.addActionListener(tc);
     }
 
     public JTextField getTxtRuta1() {
@@ -97,11 +118,38 @@ public class TextoFrame extends javax.swing.JInternalFrame {
         return txtRuta2;
     }
     
+    public void limpiarRuta1(){
+        txtRuta1.setText("");
+    }
+    
+    public void limpiarRuta2(){
+        txtRuta2.setText("");
+    }
+    
+    public boolean ruta1Vacia(){
+        if(txtRuta1.getText().equals("")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public boolean ruta2Vacia(){
+        if(txtRuta2.getText().equals("")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    
 
     private controllers.TextoController tc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnArchivo1;
     private javax.swing.JButton btnArchivo2;
+    private javax.swing.JButton btnLimpiarRuta1;
+    private javax.swing.JButton btnLimpiarRuta2;
     private javax.swing.JEditorPane editorTexto;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
