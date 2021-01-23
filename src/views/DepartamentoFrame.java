@@ -7,6 +7,7 @@ package views;
 
 import controllers.DepaFrameController;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,8 +22,8 @@ public class DepartamentoFrame extends javax.swing.JInternalFrame {
         initComponents();
         setItemListaDepa();
         setControllers();
+        listaDepartamentos.setSelectedIndex(0);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,9 +45,7 @@ public class DepartamentoFrame extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Municipio");
 
-        listaDepartamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        listaMunicipios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        listaDepartamentos.setActionCommand("Depa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,33 +71,39 @@ public class DepartamentoFrame extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(listaDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(listaMunicipios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void setItemListaDepa(){
-        departamentos = new String[]{"Masaya","Managua","Boaco", "Carazo", "Chinandega", "Chontales"
-        , "Estelí", "Granada", "Jinotega", "León", "Madriz","Matagalpa",
-        "Nueva Segovia", "Río San Juan", "Rivas"};
-        
+    private void setItemListaDepa() {
+        departamentos = new String[]{"Masaya", "Managua", "Boaco", "Carazo", "Chinandega", "Chontales",
+            "Estelí", "Granada", "Jinotega", "León", "Madriz", "Matagalpa",
+            "Nueva Segovia", "Río San Juan", "Rivas"};
+
         listaDepartamentos.setModel(new javax.swing.DefaultComboBoxModel<>(departamentos));
-        
+
     }
-    
-    private void setControllers(){
+
+    private void setControllers() {
         dfc = new DepaFrameController(this);
         listaMunicipios.addActionListener(dfc);
+        listaDepartamentos.addActionListener(dfc);
     }
-    
-    public String getDepaSeleccionado(){
+
+    public String getDepaSeleccionado() {
         return listaDepartamentos.getSelectedItem().toString();
     }
-    
-    public JComboBox getListaMunicipios(){
+
+    public JComboBox getListaMunicipios() {
         return listaMunicipios;
     }
+
+    public JComboBox<String> getListaDepa() {
+        return listaDepartamentos;
+    }
+
     
     private DepaFrameController dfc;
     private String[] departamentos;
