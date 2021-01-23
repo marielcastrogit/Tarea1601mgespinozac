@@ -36,9 +36,10 @@
                 <Property name="text" type="java.lang.String" value="Convertir monedas"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuItemDepaMunicipios">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Departamento - Municipio"/>
+                <Property name="actionCommand" type="java.lang.String" value="Departamento Municipio"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">

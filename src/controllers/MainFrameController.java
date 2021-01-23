@@ -2,26 +2,42 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import views.MainFrame;
-import views.TextoFrame;
+import javax.swing.*;
+import views.*;
 
 public class MainFrameController implements ActionListener{
     private MainFrame frame;
     private TextoFrame textoFrame;
+    private DepartamentoFrame depaFrame;
     
     public MainFrameController(MainFrame frame){
         this.frame = frame;
         textoFrame = new TextoFrame();
+        depaFrame = new DepartamentoFrame();
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
        switch(e.getActionCommand()){
            case "Fusionar contenido archivos":
-               frame.getDesktop().add(textoFrame);
-               textoFrame.setVisible(true);
+               mostrarFormularioInterno(textoFrame, false, true);
+               break;
+           case "Departamento Municipio":
+               mostrarFormularioInterno(depaFrame, false, true);
                break;
        }
+    }
+    
+    private void mostrarFormularioInterno(JInternalFrame internal, boolean maximizable, boolean centrado){
+        frame.getDesktop().add(internal);
+        internal.setVisible(true);
+        if(maximizable){
+            frame.getDesktop().getDesktopManager().maximizeFrame(internal);
+        } 
+        if((!maximizable) && centrado){
+            internal.setLocation((frame.getDesktop().getWidth() - internal.getWidth()) / 2,
+                    (frame.getDesktop().getHeight() - internal.getHeight()) / 2);   
+        }
     }
     
 }
