@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.AbstractButton;
 import views.CineFrame;
 
-public class CineFrameController implements KeyListener, ActionListener, ItemListener {
+public class CineFrameController implements KeyListener, ItemListener {
 
     private CineFrame cine;
 
@@ -41,34 +41,25 @@ public class CineFrameController implements KeyListener, ActionListener, ItemLis
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == cine.getListaPeliculas()) {
-
-            System.out.println("LISTA PELICULAS");
-            String pelicula = cine.getListaPeliculas().getSelectedItem().toString();
-
-            if (pelicula.equals("Star Wars - El ascenso de Skywalker")) {
-                System.out.println("LISTA PELICULAS SEGUNDO IF");
-
-            }
-
-        }
-    }
-
-    @Override
     public void itemStateChanged(ItemEvent e) {
-        String item = ((AbstractButton) e.getItemSelectable()).getActionCommand();
-        System.out.println(item);
-        if (item.equals("2D")) {
 
-            System.out.println("LISTA PELICULAS TERCER IF");
-            cine.getLblPrecioAdultos().setText("140");
-            cine.getLblPrecioNiños().setText("120");
-        }
-        if (cine.getRbt3D().isSelected()) {
-            System.out.println("LISTA PELICULAS CUARTO IF");
-            cine.getLblPrecioAdultos().setText("180");
-            cine.getLblPrecioNiños().setText("150");
+        String item = ((AbstractButton) e.getItemSelectable()).getActionCommand();
+        
+        
+        String pelicula = cine.getListaPeliculas().getSelectedItem().toString();
+
+        if (pelicula.equals("Star Wars - El ascenso de Skywalker")) {
+            if (item.equals("2D")) {
+
+                System.out.println("LISTA PELICULAS TERCER IF");
+                cine.getLblPrecioAdultos().setText("140");
+                cine.getLblPrecioNiños().setText("120");
+            }
+            if (cine.getRbt3D().isSelected()) {
+                System.out.println("LISTA PELICULAS CUARTO IF");
+                cine.getLblPrecioAdultos().setText("180");
+                cine.getLblPrecioNiños().setText("150");
+            }
         }
     }
 

@@ -198,10 +198,8 @@ public class CineFrame extends javax.swing.JInternalFrame {
         cfc = new CineFrameController(this);
         txtCantidadBoletosAdultos.addKeyListener(cfc);
         txtCantidadBoletosNiños.addKeyListener(cfc);
-        listaPeliculas.addActionListener(cfc);
         rbt2D.addItemListener(cfc);
         rbt3D.addItemListener(cfc);
-        
     }
     
     public JTextField getTxtBoletosAdultos(){
