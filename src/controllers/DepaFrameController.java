@@ -1,7 +1,6 @@
 package controllers;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import views.DepartamentoFrame;
@@ -19,11 +18,11 @@ public class DepaFrameController implements ActionListener {
         if (e.getActionCommand().equals("Depa")) {
             setItemsMunicipio();
         }
-        if ((depa.getListaDepa() != null) && (depa.getListaMunicipios() != null)) {
-            JOptionPane.showMessageDialog(depa, "Has seleccionado" + depa.getListaDepa().getSelectedItem().toString() + ", "
-                    + depa.getListaMunicipios().getSelectedItem().toString(), "Message", JOptionPane.INFORMATION_MESSAGE);
 
+        if (e.getSource() == depa.getListaMunicipios()) {
+            mensaje();
         }
+
     }
 
     private void setItemsMunicipio() {
@@ -78,9 +77,8 @@ public class DepaFrameController implements ActionListener {
 
     private void mensaje() {
         if ((depa.getListaDepa() != null) && (depa.getListaMunicipios() != null)) {
-            JOptionPane.showMessageDialog(depa, "Has seleccionado" + depa.getListaDepa().getSelectedItem().toString() + ", "
+            JOptionPane.showMessageDialog(depa, "Has seleccionado " + depa.getListaDepa().getSelectedItem().toString() + ", "
                     + depa.getListaMunicipios().getSelectedItem().toString(), "Message", JOptionPane.INFORMATION_MESSAGE);
-
         }
     }
 }
