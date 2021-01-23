@@ -24,7 +24,7 @@ public class MainFrame extends javax.swing.JFrame {
         mnuItemFusionar = new javax.swing.JMenuItem();
         mnuItemConvertir = new javax.swing.JMenuItem();
         mnuItemDepaMunicipios = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        mnuItemPersona = new javax.swing.JMenuItem();
         mnuItemCine = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,8 +52,8 @@ public class MainFrame extends javax.swing.JFrame {
         mnuItemDepaMunicipios.setActionCommand("Departamento Municipio");
         jMenu2.add(mnuItemDepaMunicipios);
 
-        jMenuItem6.setText("Persona");
-        jMenu2.add(jMenuItem6);
+        mnuItemPersona.setText("Persona");
+        jMenu2.add(mnuItemPersona);
 
         mnuItemCine.setText("Cine");
         jMenu2.add(mnuItemCine);
@@ -109,6 +109,7 @@ public class MainFrame extends javax.swing.JFrame {
         mnuItemDepaMunicipios.addActionListener(mfc);
         mnuItemCine.addActionListener(mfc);
         mnuItemConvertir.addActionListener(mfc);
+        mnuItemPersona.addActionListener(mfc);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -118,10 +119,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem mnuItemCine;
     private javax.swing.JMenuItem mnuItemConvertir;
     private javax.swing.JMenuItem mnuItemDepaMunicipios;
     private javax.swing.JMenuItem mnuItemFusionar;
+    private javax.swing.JMenuItem mnuItemPersona;
     // End of variables declaration//GEN-END:variables
 }

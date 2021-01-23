@@ -12,6 +12,7 @@ public class MainFrameController implements ActionListener {
     private final DepartamentoFrame depaFrame;
     private final CineFrame cineFrame;
     private final ConvertidorMonedaFrame convertidor;
+    private final PersonFrame persona;
     
 
     public MainFrameController(MainFrame frame) {
@@ -20,6 +21,7 @@ public class MainFrameController implements ActionListener {
         depaFrame = new DepartamentoFrame();
         cineFrame = new CineFrame();
         convertidor = new ConvertidorMonedaFrame();
+        persona = new PersonFrame();
     }
 
     @Override
@@ -36,6 +38,9 @@ public class MainFrameController implements ActionListener {
                 break;
             case "Convertir monedas":
                 mostrarFormularioInterno(convertidor,false, true);
+                break;
+            case "Persona":
+                mostrarFormularioInterno(persona,false,true);
                 break;
         }
 
