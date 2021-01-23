@@ -25,8 +25,6 @@ public class CineFrame extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         listaPeliculas = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        rbt2D = new javax.swing.JRadioButton();
-        rbt3D = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblPrecioAdultos = new javax.swing.JLabel();
@@ -43,6 +41,8 @@ public class CineFrame extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        rbt2D = new javax.swing.JRadioButton();
+        rbt3D = new javax.swing.JRadioButton();
 
         jLabel1.setText("Película:");
 
@@ -51,13 +51,6 @@ public class CineFrame extends javax.swing.JInternalFrame {
         listaPeliculas.setActionCommand("Peliculas");
 
         jLabel4.setText("Tipo de sala: ");
-
-        btnGrupoSala.add(rbt2D);
-        rbt2D.setSelected(true);
-        rbt2D.setText("2D");
-
-        btnGrupoSala.add(rbt3D);
-        rbt3D.setText("3D");
 
         jLabel2.setText("Precio por boleto:");
 
@@ -81,6 +74,12 @@ public class CineFrame extends javax.swing.JInternalFrame {
 
         jLabel13.setText("Cambio:");
 
+        btnGrupoSala.add(rbt2D);
+        rbt2D.setText("2D");
+
+        btnGrupoSala.add(rbt3D);
+        rbt3D.setText("3D");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,7 +91,7 @@ public class CineFrame extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                                 .addComponent(listaPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,19 +101,13 @@ public class CineFrame extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGap(37, 37, 37)
-                                    .addComponent(rbt2D)
-                                    .addGap(58, 58, 58)
-                                    .addComponent(rbt3D))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(11, 11, 11)
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtCantidadBoletosAdultos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel10)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCantidadBoletosAdultos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel10))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(43, 43, 43)
                                 .addComponent(jLabel3)
@@ -142,7 +135,13 @@ public class CineFrame extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel13)
                                 .addComponent(jLabel12)))
-                        .addGap(139, 139, 139)))
+                        .addGap(139, 139, 139))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(rbt2D)
+                        .addGap(101, 101, 101)
+                        .addComponent(rbt3D)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -189,7 +188,7 @@ public class CineFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -200,6 +199,9 @@ public class CineFrame extends javax.swing.JInternalFrame {
         txtCantidadBoletosAdultos.addKeyListener(cfc);
         txtCantidadBoletosNiños.addKeyListener(cfc);
         listaPeliculas.addActionListener(cfc);
+        rbt2D.addItemListener(cfc);
+        rbt3D.addItemListener(cfc);
+        
     }
     
     public JTextField getTxtBoletosAdultos(){

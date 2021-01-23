@@ -1,10 +1,10 @@
 package controllers;
 
 import java.awt.event.*;
-import javax.swing.ButtonModel;
+import javax.swing.AbstractButton;
 import views.CineFrame;
 
-public class CineFrameController implements KeyListener, ActionListener {
+public class CineFrameController implements KeyListener, ActionListener, ItemListener {
 
     private CineFrame cine;
 
@@ -50,21 +50,25 @@ public class CineFrameController implements KeyListener, ActionListener {
             if (pelicula.equals("Star Wars - El ascenso de Skywalker")) {
                 System.out.println("LISTA PELICULAS SEGUNDO IF");
 
-                String salaCine = cine.getBtnGrupoSala().getSelection().getActionCommand();
-
-                if (salaCine.equals("2D")) {
-                    System.out.println("LISTA PELICULAS TERCER IF");
-                    cine.getLblPrecioAdultos().setText("140");
-                    cine.getLblPrecioNiños().setText("120");
-                }
-
-                if (salaCine.equals("3D")) {
-                    cine.getLblPrecioAdultos().setText("180");
-                    cine.getLblPrecioNiños().setText("150");
-                }
-
             }
 
+        }
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        String item = ((AbstractButton) e.getItemSelectable()).getActionCommand();
+        System.out.println(item);
+        if (item.equals("2D")) {
+
+            System.out.println("LISTA PELICULAS TERCER IF");
+            cine.getLblPrecioAdultos().setText("140");
+            cine.getLblPrecioNiños().setText("120");
+        }
+        if (cine.getRbt3D().isSelected()) {
+            System.out.println("LISTA PELICULAS CUARTO IF");
+            cine.getLblPrecioAdultos().setText("180");
+            cine.getLblPrecioNiños().setText("150");
         }
     }
 
