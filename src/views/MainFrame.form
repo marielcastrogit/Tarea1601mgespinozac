@@ -47,6 +47,11 @@
                 <Property name="text" type="java.lang.String" value="Persona"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuItemCine">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cine"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>

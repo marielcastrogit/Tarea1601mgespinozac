@@ -25,6 +25,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         mnuItemDepaMunicipios = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        mnuItemCine = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().add(desktop, java.awt.BorderLayout.CENTER);
@@ -53,6 +54,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuItem6.setText("Persona");
         jMenu2.add(jMenuItem6);
+
+        mnuItemCine.setText("Cine");
+        jMenu2.add(mnuItemCine);
 
         jMenuBar1.add(jMenu2);
 
@@ -103,6 +107,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         mnuItemFusionar.addActionListener(mfc);
         mnuItemDepaMunicipios.addActionListener(mfc);
+        mnuItemCine.addActionListener(mfc);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -114,6 +119,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem mnuItemCine;
     private javax.swing.JMenuItem mnuItemDepaMunicipios;
     private javax.swing.JMenuItem mnuItemFusionar;
     // End of variables declaration//GEN-END:variables
