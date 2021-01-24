@@ -7,16 +7,19 @@ import views.*;
 
 public class MainFrameController implements ActionListener {
 
-    private MainFrame frame;
-    private TextoFrame textoFrame;
-    private DepartamentoFrame depaFrame;
-    private CineFrame cineFrame;
+    private final MainFrame frame;
+    private final TextoFrame textoFrame;
+    private final DepartamentoFrame depaFrame;
+    private final CineFrame cineFrame;
+    private final ConvertirMoneda convertidor;
+    
 
     public MainFrameController(MainFrame frame) {
         this.frame = frame;
         textoFrame = new TextoFrame();
         depaFrame = new DepartamentoFrame();
         cineFrame = new CineFrame();
+        convertidor = new ConvertirMoneda();
     }
 
     @Override
@@ -30,6 +33,9 @@ public class MainFrameController implements ActionListener {
                 break;
             case "Cine":
                 mostrarFormularioInterno(cineFrame, false, true);
+                break;
+            case "Convertir monedas":
+                mostrarFormularioInterno(convertidor,false, true);
                 break;
         }
 

@@ -31,7 +31,7 @@
                 <Property name="text" type="java.lang.String" value="Fusionar contenido archivos"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuItemConvertir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Convertir monedas"/>
               </Properties>
