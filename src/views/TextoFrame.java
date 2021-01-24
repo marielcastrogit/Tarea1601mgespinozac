@@ -27,6 +27,7 @@ public class TextoFrame extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        setTitle("TextoFrame");
 
         btnArchivo1.setText("...");
         btnArchivo1.setActionCommand("archivo1");

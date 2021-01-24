@@ -89,14 +89,8 @@ public class PersonController implements ActionListener, KeyListener {
                         String fechaCumpleaños = String.valueOf(dia) + "-" + mes + "-" + año;
 
                         persona.getTxtFechaNacimiento().setText(fechaCumpleaños);
-
-                        Calendar calendarioActual = Calendar.getInstance();
-
-                        int añoActual = calendarioActual.get(Calendar.YEAR);
-
-                        int edad = añoActual - añoNacimiento;
-
-                        persona.getTxtEdad().setText(String.valueOf(edad));
+                        
+                        persona.getTxtEdad().setText(String.valueOf(calcularEdad(Integer.parseInt(dia),Integer.parseInt(mes),añoNacimiento)));
 
                     } else {
                         JOptionPane.showMessageDialog(persona, "Esta persona no tiene 16 años por lo tanto la cedula no es valida", "", JOptionPane.INFORMATION_MESSAGE);
@@ -119,6 +113,21 @@ public class PersonController implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e
     ) {
     }
+    
+    private int calcularEdad(int dia, int mes, int año){
+        Calendar fechaActual = Calendar.getInstance();
+        Calendar fechaNacimiento = Calendar.getInstance();
+        
+        fechaNacimiento.set(año, mes-1, dia);
+        
+        int edad = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
+        
+        if(fechaNacimiento.get(Calendar.DAY_OF_YEAR)>fechaActual.get(Calendar.DAY_OF_YEAR)){
+            edad--;
+        }
+        
+        return edad;
+    }
 
     private void guardarPersona() {
         file.showSaveDialog(persona);
@@ -129,7 +138,7 @@ public class PersonController implements ActionListener, KeyListener {
             ObjectOutputStream ous = new ObjectOutputStream(new FileOutputStream(archivoGuardar));
             ous.writeObject(personaModelo);
             ous.flush();
-        } catch (IOException ex) {
+        } catch (IOException | NullPointerException ex) {
         }
 
     }
@@ -142,7 +151,7 @@ public class PersonController implements ActionListener, KeyListener {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(archivoAbrir));
             personaModelo = (Persona) ois.readObject();
             persona.setDatosPersona(personaModelo);
-        } catch (IOException | ClassNotFoundException ex) {
+        } catch (IOException | NullPointerException | ClassNotFoundException ex) {
         }
 
     }

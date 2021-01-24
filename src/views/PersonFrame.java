@@ -62,6 +62,7 @@ public class PersonFrame extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setResizable(true);
+        setTitle("Persona");
 
         btnGuardar.setText("Guardar");
         btnGuardar.setActionCommand("Boton guardar");

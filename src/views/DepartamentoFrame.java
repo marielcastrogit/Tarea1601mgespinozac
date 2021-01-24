@@ -24,6 +24,7 @@ public class DepartamentoFrame extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setTitle("DepartamentoMunicipioFrame");
 
         jLabel1.setText("Departamento");
 

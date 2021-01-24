@@ -44,6 +44,10 @@ public class CineFrame extends javax.swing.JInternalFrame {
         rbt3D = new javax.swing.JRadioButton();
         txtTotalPagado = new javax.swing.JTextField();
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Cine");
+
         jLabel1.setText("Película:");
 
         listaPeliculas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Star Wars - El ascenso de Skywalker", "ROOM", "1917", "Jojo Rabbit" }));

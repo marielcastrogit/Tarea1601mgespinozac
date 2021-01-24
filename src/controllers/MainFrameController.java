@@ -13,7 +13,6 @@ public class MainFrameController implements ActionListener {
     private final CineFrame cineFrame;
     private final ConvertidorMonedaFrame convertidor;
     private final PersonFrame persona;
-    
 
     public MainFrameController(MainFrame frame) {
         this.frame = frame;
@@ -28,7 +27,9 @@ public class MainFrameController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Fusionar contenido archivos":
+
                 mostrarFormularioInterno(textoFrame, false, true);
+
                 break;
             case "Departamento Municipio":
                 mostrarFormularioInterno(depaFrame, false, true);
@@ -37,10 +38,10 @@ public class MainFrameController implements ActionListener {
                 mostrarFormularioInterno(cineFrame, false, true);
                 break;
             case "Convertir monedas":
-                mostrarFormularioInterno(convertidor,false, true);
+                mostrarFormularioInterno(convertidor, false, true);
                 break;
             case "Persona":
-                mostrarFormularioInterno(persona,false,true);
+                mostrarFormularioInterno(persona, false, true);
                 break;
         }
 
@@ -57,5 +58,6 @@ public class MainFrameController implements ActionListener {
                     (frame.getDesktop().getHeight() - internal.getHeight()) / 2);
         }
     }
+
 
 }

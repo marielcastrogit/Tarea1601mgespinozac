@@ -48,6 +48,7 @@ public class ConvertidorMonedaFrame extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setResizable(true);
+        setTitle("ConvertidorFrame");
 
         jLabel4.setText("Monto");
 
