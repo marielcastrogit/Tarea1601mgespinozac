@@ -5,7 +5,7 @@
  */
 package views;
 
-import controllers.ConvertirMonedaController;
+import controllers.ConvertidorController;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -15,12 +15,12 @@ import javax.swing.JTextField;
  *
  * @author Usuario
  */
-public class ConvertirMoneda extends javax.swing.JInternalFrame {
+public class ConvertidorMonedaFrame extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form ConvertirMoneda
+     * Creates new form ConvertidorMonedaFrame
      */
-    public ConvertirMoneda() {
+    public ConvertidorMonedaFrame() {
         initComponents();
         setControllers();
     }
@@ -34,24 +34,20 @@ public class ConvertirMoneda extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblMonedasDeseo = new javax.swing.JLabel();
-        lista1Monedas = new javax.swing.JComboBox<>();
-        lista2Monedas = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtMontoTengo = new javax.swing.JTextField();
         txtMontoDeseado = new javax.swing.JTextField();
         btnConvertir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
         lblMonedasTengo = new javax.swing.JLabel();
+        lblMonedasDeseo = new javax.swing.JLabel();
+        lista1Monedas = new javax.swing.JComboBox<>();
+        lista2Monedas = new javax.swing.JComboBox<>();
 
-        lblMonedasDeseo.setText("Moneda que deseo");
-
-        lista1Monedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Córdobas", "Dólares", "Euros" }));
-        lista1Monedas.setSelectedIndex(-1);
-
-        lista2Monedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Córdobas", "Dólares", "Euros" }));
-        lista2Monedas.setSelectedIndex(-1);
+        setClosable(true);
+        setIconifiable(true);
+        setResizable(true);
 
         jLabel4.setText("Monto");
 
@@ -61,7 +57,18 @@ public class ConvertirMoneda extends javax.swing.JInternalFrame {
 
         btnConvertir.setText("Convertir");
 
+        lblFecha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblFecha.setToolTipText("");
+
         lblMonedasTengo.setText("Moneda que tengo");
+
+        lblMonedasDeseo.setText("Moneda que deseo");
+
+        lista1Monedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Córdobas", "Dólares", "Euros" }));
+        lista1Monedas.setSelectedIndex(-1);
+
+        lista2Monedas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Córdobas", "Dólares", "Euros" }));
+        lista2Monedas.setSelectedIndex(-1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,20 +89,19 @@ public class ConvertirMoneda extends javax.swing.JInternalFrame {
                     .addComponent(txtMontoDeseado))
                 .addGap(27, 27, 27))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(btnConvertir, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addGap(139, 139, 139)
+                .addComponent(btnConvertir, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(123, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMonedasTengo)
@@ -114,15 +120,16 @@ public class ConvertirMoneda extends javax.swing.JInternalFrame {
                     .addComponent(txtMontoDeseado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnConvertir)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void setControllers(){
+    private void setControllers() {
+        cmc = new ConvertidorController(this);
         lista1Monedas.addItemListener(cmc);
         lista2Monedas.addItemListener(cmc);
+
     }
 
     public JLabel getLblMonedasDeseo() {
@@ -152,16 +159,19 @@ public class ConvertirMoneda extends javax.swing.JInternalFrame {
     public JTextField getTxtMontoTengo() {
         return txtMontoTengo;
     }
-    
-    
-    
-    private ConvertirMonedaController cmc;
+
+    public JLabel getLblFecha() {
+        return lblFecha;
+    }
+
+    private ConvertidorController cmc;
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConvertir;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblMonedasDeseo;
     private javax.swing.JLabel lblMonedasTengo;
     private javax.swing.JComboBox<String> lista1Monedas;

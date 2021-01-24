@@ -11,7 +11,7 @@ public class MainFrameController implements ActionListener {
     private final TextoFrame textoFrame;
     private final DepartamentoFrame depaFrame;
     private final CineFrame cineFrame;
-    private final ConvertirMoneda convertidor;
+    private final ConvertidorMonedaFrame convertidor;
     
 
     public MainFrameController(MainFrame frame) {
@@ -19,7 +19,7 @@ public class MainFrameController implements ActionListener {
         textoFrame = new TextoFrame();
         depaFrame = new DepartamentoFrame();
         cineFrame = new CineFrame();
-        convertidor = new ConvertirMoneda();
+        convertidor = new ConvertidorMonedaFrame();
     }
 
     @Override
