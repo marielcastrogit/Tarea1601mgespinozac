@@ -70,11 +70,9 @@
                               <Component id="txtCantidadBoletosNiños" min="-2" pref="47" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="jLabel16" min="-2" pref="63" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabel15" alignment="0" pref="63" max="32767" attributes="0"/>
-                                  <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="lblCambio" min="-2" pref="63" max="-2" attributes="0"/>
+                              <Component id="lblTotalPagar" min="-2" pref="63" max="-2" attributes="0"/>
+                              <Component id="txtTotalPagado" alignment="1" min="-2" pref="63" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
@@ -143,19 +141,19 @@
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jLabel15" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="lblTotalPagar" min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel14" min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTotalPagado" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel16" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="lblCambio" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -247,11 +245,9 @@
         <Property name="text" type="java.lang.String" value="Cambio:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel15">
+    <Component class="javax.swing.JLabel" name="lblTotalPagar">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel14">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel16">
+    <Component class="javax.swing.JLabel" name="lblCambio">
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbt2D">
       <Properties>
@@ -268,6 +264,8 @@
         </Property>
         <Property name="text" type="java.lang.String" value="3D"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTotalPagado">
     </Component>
   </SubComponents>
 </Form>

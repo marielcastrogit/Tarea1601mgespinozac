@@ -38,11 +38,11 @@ public class CineFrame extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lblTotalPagar = new javax.swing.JLabel();
+        lblCambio = new javax.swing.JLabel();
         rbt2D = new javax.swing.JRadioButton();
         rbt3D = new javax.swing.JRadioButton();
+        txtTotalPagado = new javax.swing.JTextField();
 
         jLabel1.setText("Película:");
 
@@ -100,16 +100,15 @@ public class CineFrame extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel8))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtCantidadBoletosAdultos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(43, 43, 43)
                                 .addComponent(jLabel10))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblPrecioAdultos, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -123,10 +122,9 @@ public class CineFrame extends javax.swing.JInternalFrame {
                                 .addGap(16, 16, 16)
                                 .addComponent(txtCantidadBoletosNiños, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(lblCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTotalPagado, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(14, 14, 14))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -140,8 +138,7 @@ public class CineFrame extends javax.swing.JInternalFrame {
                         .addGap(40, 40, 40)
                         .addComponent(rbt2D)
                         .addGap(101, 101, 101)
-                        .addComponent(rbt3D)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(rbt3D)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -179,16 +176,16 @@ public class CineFrame extends javax.swing.JInternalFrame {
                             .addComponent(jLabel10))
                         .addGap(49, 49, 49)
                         .addComponent(jLabel11))
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTotalPagado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(lblCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,8 +195,10 @@ public class CineFrame extends javax.swing.JInternalFrame {
         cfc = new CineFrameController(this);
         txtCantidadBoletosAdultos.addKeyListener(cfc);
         txtCantidadBoletosNiños.addKeyListener(cfc);
+        txtTotalPagado.addKeyListener(cfc);
         rbt2D.addItemListener(cfc);
         rbt3D.addItemListener(cfc);
+        txtTotalPagado.addMouseListener(cfc);
         listaPeliculas.addActionListener(cfc);
     }
     
@@ -234,6 +233,26 @@ public class CineFrame extends javax.swing.JInternalFrame {
     public ButtonGroup getBtnGrupoSala() {
         return btnGrupoSala;
     }
+
+    public JLabel getLblCambio() {
+        return lblCambio;
+    }
+
+    public JTextField getTxtCantidadBoletosAdultos() {
+        return txtCantidadBoletosAdultos;
+    }
+
+    public JTextField getTxtCantidadBoletosNiños() {
+        return txtCantidadBoletosNiños;
+    }
+
+    public JTextField getTxtTotalPagado() {
+        return txtTotalPagado;
+    }
+
+    public JLabel getLblTotalPagar() {
+        return lblTotalPagar;
+    }
     
     
     
@@ -246,21 +265,21 @@ public class CineFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblCambio;
     private javax.swing.JLabel lblPrecioAdultos;
     private javax.swing.JLabel lblPrecioNiños;
+    private javax.swing.JLabel lblTotalPagar;
     private javax.swing.JComboBox<String> listaPeliculas;
     private javax.swing.JRadioButton rbt2D;
     private javax.swing.JRadioButton rbt3D;
     private javax.swing.JTextField txtCantidadBoletosAdultos;
     private javax.swing.JTextField txtCantidadBoletosNiños;
+    private javax.swing.JTextField txtTotalPagado;
     // End of variables declaration//GEN-END:variables
 }

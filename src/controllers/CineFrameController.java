@@ -2,9 +2,10 @@ package controllers;
 
 import java.awt.event.*;
 import javax.swing.AbstractButton;
+import javax.swing.JOptionPane;
 import views.CineFrame;
 
-public class CineFrameController implements KeyListener, ActionListener, ItemListener {
+public class CineFrameController implements KeyListener, ActionListener, MouseListener, ItemListener {
 
     private CineFrame cine;
 
@@ -38,6 +39,45 @@ public class CineFrameController implements KeyListener, ActionListener, ItemLis
 
     @Override
     public void keyReleased(KeyEvent e) {
+        if ((e.getSource() == cine.getTxtBoletosAdultos()) || (e.getSource() == cine.getTxtBoletosNiños())) {
+
+            try {
+                int numBoletosAdulto = Integer.parseInt(cine.getTxtBoletosAdultos().getText());
+                int numBoletosNiño = Integer.parseInt(cine.getTxtBoletosNiños().getText());
+
+                int precioBoletoAdulto = Integer.parseInt(cine.getLblPrecioAdultos().getText());
+                int precioBoletoNiño = Integer.parseInt(cine.getLblPrecioNiños().getText());
+
+                int totalPagar = (numBoletosAdulto * precioBoletoAdulto) + (numBoletosNiño * precioBoletoNiño);
+
+                cine.getLblTotalPagar().setText(String.valueOf(totalPagar));
+
+            } catch (NumberFormatException ex) {
+
+            }
+        }
+
+        if (e.getSource() == cine.getTxtTotalPagado()) {
+            if (!cine.getLblTotalPagar().getText().isEmpty()) {
+                try {
+                    int totalPagado = Integer.parseInt(cine.getTxtTotalPagado().getText());
+                    int totalPagar = Integer.parseInt(cine.getLblTotalPagar().getText());
+                    if (totalPagado > totalPagar) {
+                        cine.getLblCambio().setText(String.valueOf((totalPagado-totalPagar)));
+                    }
+                    
+                    if(totalPagado == totalPagar){
+                        cine.getLblCambio().setText("0");
+                    }
+                    
+                    if(totalPagado<totalPagar){
+                        cine.getLblCambio().setText("No cubre el monto");
+                    }
+                } catch (NumberFormatException ex) {
+
+                }
+            }
+        }
     }
 
     @Override
@@ -74,6 +114,30 @@ public class CineFrameController implements KeyListener, ActionListener, ItemLis
 
             }
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        mousePressed(e);
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        mousePressed(e);
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        mousePressed(e);
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        mousePressed(e);
     }
 
 }
