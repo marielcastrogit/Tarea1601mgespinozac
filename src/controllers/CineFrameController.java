@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.AbstractButton;
 import views.CineFrame;
 
-public class CineFrameController implements KeyListener, ActionListener,ItemListener {
+public class CineFrameController implements KeyListener, ActionListener, ItemListener {
 
     private CineFrame cine;
 
@@ -61,14 +61,17 @@ public class CineFrameController implements KeyListener, ActionListener,ItemList
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == cine.getListaPeliculas()){
-            
-            if(!(cine.getListaPeliculas().getSelectedItem().toString().equals("Star Wars - El ascenso de Skywalker"))){
+        if (e.getSource() == cine.getListaPeliculas()) {
+
+            if (!(cine.getListaPeliculas().getSelectedItem().toString().equals("Star Wars - El ascenso de Skywalker"))) {
                 cine.getBtnGrupoSala().setSelected(cine.getRbt2D().getModel(), true);
                 cine.getRbt3D().setEnabled(false);
-            }else{
+                cine.getLblPrecioAdultos().setText("140");
+                cine.getLblPrecioNiños().setText("120");
+            } else {
                 cine.getRbt2D().setEnabled(true);
                 cine.getRbt3D().setEnabled(true);
+
             }
         }
     }
