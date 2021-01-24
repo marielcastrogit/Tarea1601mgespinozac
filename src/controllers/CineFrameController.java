@@ -1,16 +1,19 @@
 package controllers;
 
 import java.awt.event.*;
-import javax.swing.AbstractButton;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import views.CineFrame;
 
-public class CineFrameController implements KeyListener, ActionListener, MouseListener, ItemListener {
+public class CineFrameController implements KeyListener, ActionListener, ItemListener {
 
-    private CineFrame cine;
+    private final CineFrame cine;
 
     public CineFrameController(CineFrame cine) {
         this.cine = cine;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
     }
 
     @Override
@@ -34,48 +37,52 @@ public class CineFrameController implements KeyListener, ActionListener, MouseLi
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
-    }
-
-    @Override
     public void keyReleased(KeyEvent e) {
         if ((e.getSource() == cine.getTxtBoletosAdultos()) || (e.getSource() == cine.getTxtBoletosNiños())) {
-
-            try {
-                int numBoletosAdulto = Integer.parseInt(cine.getTxtBoletosAdultos().getText());
-                int numBoletosNiño = Integer.parseInt(cine.getTxtBoletosNiños().getText());
-
-                int precioBoletoAdulto = Integer.parseInt(cine.getLblPrecioAdultos().getText());
-                int precioBoletoNiño = Integer.parseInt(cine.getLblPrecioNiños().getText());
-
-                int totalPagar = (numBoletosAdulto * precioBoletoAdulto) + (numBoletosNiño * precioBoletoNiño);
-
-                cine.getLblTotalPagar().setText(String.valueOf(totalPagar));
-
-            } catch (NumberFormatException ex) {
-
-            }
+            calcularTotal();
         }
 
         if (e.getSource() == cine.getTxtTotalPagado()) {
-            if (!cine.getLblTotalPagar().getText().isEmpty()) {
-                try {
-                    int totalPagado = Integer.parseInt(cine.getTxtTotalPagado().getText());
-                    int totalPagar = Integer.parseInt(cine.getLblTotalPagar().getText());
-                    if (totalPagado > totalPagar) {
-                        cine.getLblCambio().setText(String.valueOf((totalPagado-totalPagar)));
-                    }
-                    
-                    if(totalPagado == totalPagar){
-                        cine.getLblCambio().setText("0");
-                    }
-                    
-                    if(totalPagado<totalPagar){
-                        cine.getLblCambio().setText("No cubre el monto");
-                    }
-                } catch (NumberFormatException ex) {
+            calcularCambio();
+        }
+    }
 
+    private void calcularTotal() {
+
+        try {
+            int numBoletosAdulto = Integer.parseInt(cine.getTxtBoletosAdultos().getText());
+            int numBoletosNiño = Integer.parseInt(cine.getTxtBoletosNiños().getText());
+
+            int precioBoletoAdulto = Integer.parseInt(cine.getLblPrecioAdultos().getText());
+            int precioBoletoNiño = Integer.parseInt(cine.getLblPrecioNiños().getText());
+
+            int totalPagar = (numBoletosAdulto * precioBoletoAdulto) + (numBoletosNiño * precioBoletoNiño);
+
+            cine.getLblTotalPagar().setText(String.valueOf(totalPagar));
+
+        } catch (NumberFormatException ex) {
+
+        }
+    }
+
+    private void calcularCambio() {
+        if (!cine.getLblTotalPagar().getText().isEmpty()) {
+            try {
+                int totalPagado = Integer.parseInt(cine.getTxtTotalPagado().getText());
+                int totalPagar = Integer.parseInt(cine.getLblTotalPagar().getText());
+                if (totalPagado > totalPagar) {
+                    cine.getLblCambio().setText(String.valueOf((totalPagado - totalPagar)));
                 }
+
+                if (totalPagado == totalPagar) {
+                    cine.getLblCambio().setText("0");
+                }
+
+                if (totalPagado < totalPagar) {
+                    cine.getLblCambio().setText("No cubre el monto");
+                }
+            } catch (NumberFormatException ex) {
+
             }
         }
     }
@@ -91,10 +98,18 @@ public class CineFrameController implements KeyListener, ActionListener, MouseLi
             if (btnSeleccionado.equals("2D")) {
                 cine.getLblPrecioAdultos().setText("140");
                 cine.getLblPrecioNiños().setText("120");
+                if (!cine.getLblTotalPagar().getText().isEmpty()) {
+                    calcularTotal();
+                    calcularCambio();
+                }
             }
             if (btnSeleccionado.equals("3D")) {
                 cine.getLblPrecioAdultos().setText("180");
                 cine.getLblPrecioNiños().setText("150");
+                if (!cine.getLblTotalPagar().getText().isEmpty()) {
+                    calcularTotal();
+                    calcularCambio();
+                }
             }
         }
     }
@@ -108,36 +123,18 @@ public class CineFrameController implements KeyListener, ActionListener, MouseLi
                 cine.getRbt3D().setEnabled(false);
                 cine.getLblPrecioAdultos().setText("140");
                 cine.getLblPrecioNiños().setText("120");
+                cine.getTxtBoletosAdultos().setText("");
+                cine.getTxtCantidadBoletosNiños().setText("");
+                cine.getLblCambio().setText("");
+                cine.getLblTotalPagar().setText("");
+                cine.getLblCambio().setText("");
+                cine.getTxtTotalPagado().setText("");
             } else {
                 cine.getRbt2D().setEnabled(true);
                 cine.getRbt3D().setEnabled(true);
 
             }
         }
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        mousePressed(e);
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        mousePressed(e);
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        mousePressed(e);
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        mousePressed(e);
     }
 
 }
